@@ -18,3 +18,9 @@ Length Name
 80004 http___www.google.ru_intl_ru_services_.txt
 ```
 
+## Build:
+
+```powershell
+powershell> dotnet publish -c Release --runtime win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
+```
+
