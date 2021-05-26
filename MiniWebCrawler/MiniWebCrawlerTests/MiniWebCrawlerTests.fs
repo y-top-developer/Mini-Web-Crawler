@@ -25,11 +25,11 @@ module MiniWebCrawlerTests =
         result.IsSome |> should be True
 
     [<Test>]
-    let ``[internet connection required] Try to get downloads all pages from does not exist site`` () = 
+    let ``[internet connection required] Try to download all pages from does not exist site`` () = 
         let result = "https://aa1231asdasd12321.asda31asdasd" |> downloadPages
         result |> should equal Seq.empty
 
     [<Test>]
-    let ``[internet connection required] Try to get downloads all pages from google.com`` () = 
+    let ``[internet connection required] Try to download all pages from google.com`` () = 
         let result = "https://google.com" |> downloadPages
         result |> should not' (equal Seq.empty)
