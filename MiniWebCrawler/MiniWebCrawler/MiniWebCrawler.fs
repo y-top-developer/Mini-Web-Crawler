@@ -16,8 +16,8 @@ module MiniWebCrawler =
         async {
             try
                 let request = WebRequest.Create url
-                use! respone = request.AsyncGetResponse()
-                use stream = respone.GetResponseStream()
+                use! response = request.AsyncGetResponse()
+                use stream = response.GetResponseStream()
                 use reader = new StreamReader(stream)
                 return Some (url, reader.ReadToEnd())
             with 
@@ -41,6 +41,7 @@ module MiniWebCrawler =
     let savePage data = 
         match data with
         | Some(url, page) -> processPage url page
+        | _ -> printf "Can not save page\n"
 
     let savePages initURL = 
         downloadPages initURL |> Seq.map(fun (x:(string * string) option) -> savePage x) |> List.ofSeq |> ignore
